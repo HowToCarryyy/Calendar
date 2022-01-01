@@ -8,7 +8,7 @@ import javax.swing.*;
 public class MonthYearView extends JPanel{
 
         Calendar cal = Calendar.getInstance();
-        GridLayout layout = new GridLayout(0, 1);
+        GridLayout layout = new GridLayout(0, 1, 0, 5);
         JLabel monthLabel;
         
     public MonthYearView(int yearIndex, int monthIndex){

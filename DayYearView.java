@@ -8,14 +8,39 @@ public class DayYearView extends JButton {
     Calendar cal = Calendar.getInstance();
     Calendar currentCal = Calendar.getInstance();
 
-    public DayYearView(int yearIndex, int monthIndex, int dayOfMonthIndex) {
+    int currentYear;
+    int currentMonth;
+    int currentDayOfMonth;
+
+    int yearIndex;
+    int monthIndex;
+    int dayOfMonthIndex;
+
+    String buttonLabelCurrentDate;
+
+    public DayYearView(int _yearIndex, int _monthIndex, int _dayOfMonthIndex) {
+
+        yearIndex = _yearIndex;
+        monthIndex = _monthIndex;
+        dayOfMonthIndex = _dayOfMonthIndex;
 
         setPreferredSize(new Dimension(1920 / 15, 20));
 
-        int currentYear = currentCal.get(Calendar.YEAR);
-        int currentMonth = currentCal.get(Calendar.MONTH);
-        int currentDayOfMonth = currentCal.get(Calendar.DAY_OF_MONTH);
+        currentYear = currentCal.get(Calendar.YEAR);
+        currentMonth = currentCal.get(Calendar.MONTH);
+        currentDayOfMonth = currentCal.get(Calendar.DAY_OF_MONTH);
 
+        markCurrentDay();
+
+        cal.set(Calendar.YEAR, yearIndex);
+        cal.set(Calendar.MONTH, monthIndex);
+        cal.set(Calendar.DAY_OF_MONTH, dayOfMonthIndex);
+
+        setTextButtonLabelCurrentDate();
+        this.setText(buttonLabelCurrentDate);
+    }
+
+    public void markCurrentDay(){
         if (currentMonth == monthIndex && currentDayOfMonth == dayOfMonthIndex) {
             if (currentYear == yearIndex) {
                 this.setBackground(Color.RED);
@@ -23,16 +48,10 @@ public class DayYearView extends JButton {
                 this.setBackground(Color.GRAY);
             }
         }
-             
-
-        cal.set(Calendar.YEAR, yearIndex);
-        cal.set(Calendar.MONTH, monthIndex);
-        cal.set(Calendar.DAY_OF_MONTH, dayOfMonthIndex);
-
+    }
+    public void setTextButtonLabelCurrentDate(){
         DateFormat df = new SimpleDateFormat("EEE, d. yyyy");
         Date date = cal.getTime();
-        String buttonLabelCurrentDate = df.format(date);
-
-        this.setText(buttonLabelCurrentDate);
+        buttonLabelCurrentDate = df.format(date);
     }
 }

@@ -1,6 +1,7 @@
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
+import java.awt.*;
 
 public class YearView extends JPanel {
 
@@ -16,10 +17,14 @@ public class YearView extends JPanel {
         JPanel panelMonths = new JPanel();
         int chosenYear;
 
+        BoxLayout layoutYear = new BoxLayout(this, BoxLayout.PAGE_AXIS);
+        GridLayout layoutMonths = new GridLayout(1, 0, 4, 0);
+
     public YearView() {
 
-        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        panelMonths.setLayout(new BoxLayout(panelMonths, BoxLayout.X_AXIS));
+        setLayout(layoutYear);
+        panelMonths.setLayout(layoutMonths);
+        
 
         int currentYearCalendar = cal.get(Calendar.YEAR);
         chosenYear = currentYearCalendar;
