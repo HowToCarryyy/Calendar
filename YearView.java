@@ -31,7 +31,7 @@ public class YearView extends JPanel {
 
 
         switches[0] = new JButton("<");
-        currentYear = new JLabel(""+currentYearCalendar);
+        currentYear = new JLabel(""+chosenYear);
         switches[1] = new JButton(">");
 
         panelYearSwitch.add(switches[0]);

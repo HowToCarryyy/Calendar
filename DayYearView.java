@@ -37,7 +37,6 @@ public class DayYearView extends JButton {
         cal.set(Calendar.DAY_OF_MONTH, dayOfMonthIndex);
 
         setTextButtonLabelCurrentDate();
-        this.setText(buttonLabelCurrentDate);
     }
 
     public void markCurrentDay(){
@@ -50,8 +49,9 @@ public class DayYearView extends JButton {
         }
     }
     public void setTextButtonLabelCurrentDate(){
-        DateFormat df = new SimpleDateFormat("EEE, d. yyyy");
+        DateFormat df = new SimpleDateFormat("d. EEE");
         Date date = cal.getTime();
         buttonLabelCurrentDate = df.format(date);
+        this.setText(buttonLabelCurrentDate);
     }
 }
